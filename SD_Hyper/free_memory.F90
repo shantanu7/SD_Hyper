@@ -1,0 +1,29 @@
+ SUBROUTINE FREE_MEMORY
+
+ USE setup
+ USE MESH2D
+
+ WRITE(*, '(A)', ADVANCE = 'NO') ' FREEING ALLOCATED MEMORY... '
+
+ DEALLOCATE(XV, YV, IVCELL, IVBOUN, IBF2F)
+ DEALLOCATE(XVMP, YVMP, XVMP_VEL, YVMP_VEL)
+ DEALLOCATE(IF2V, IF2C, IC2F)
+ DEALLOCATE(IBFINLE, IBFOUTL, IBFSYMM, IBFPERO, IBFINTER)
+
+ DEALLOCATE(FACEMARKER)
+
+ DEALLOCATE(Xf, Xs, Lmat, Mmat)
+ DEALLOCATE(XXSolu)
+ DEALLOCATE(iface2fp, jface2fp)
+ DEALLOCATE(dpdxs, dpdxf1, dpdxf2)
+ DEALLOCATE(Q, resid, F1, G2)
+ DEALLOCATE(Jac, S1, S2)
+
+ IF (RK_stage .EQ. 4) DEALLOCATE(RK_k1, RK_k2, RK_k3, RK_k4)
+ IF (RK_stage .EQ. 5) DEALLOCATE(RK_k1, RK_k2, RK_k3, RK_k4, RK_k5)
+
+ WRITE(*,'(A)') 'DONE!'
+ PRINT*,''
+
+ END SUBROUTINE FREE_MEMORY
+ !-------------------------------------------------------------------------------!
